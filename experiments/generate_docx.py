@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Generate a two-column research paper in .docx format.
-Fixes:
-  - Title + authors + abstract all on page 1 (no page break)
+Generate a single-column research paper in .docx format.
+  - Title + authors + abstract all on page 1
   - Three authors with affiliation
   - Plain black-border tables (no color shading)
   - Figure captions BELOW figures only
@@ -115,7 +114,7 @@ def add_bullet(text):
     p.paragraph_format.first_line_indent = Cm(0)
     p.add_run(f'\u2022 {text}')
 
-def add_figure(filename, caption, width=Inches(3.0)):
+def add_figure(filename, caption, width=Inches(5.5)):
     path = os.path.join(FIG_DIR, filename)
     if os.path.exists(path):
         p = doc.add_paragraph()
@@ -185,21 +184,6 @@ def add_plain_table(caption, headers, rows):
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(2)
 
-def add_section_break_cols(ncols):
-    """Add continuous section break and set column count."""
-    new_sec = doc.add_section(2)  # continuous
-    new_sec.page_width  = Inches(8.5)
-    new_sec.page_height = Inches(11)
-    new_sec.top_margin    = Cm(2.0)
-    new_sec.bottom_margin = Cm(2.0)
-    new_sec.left_margin   = Cm(1.8)
-    new_sec.right_margin  = Cm(1.8)
-    cols = OxmlElement('w:cols')
-    cols.set(qn('w:num'), str(ncols))
-    if ncols == 2:
-        cols.set(qn('w:space'), '360')
-    new_sec._sectPr.append(cols)
-
 
 # ═══════════════════════════════════════════════════════════════════
 # BUILD THE PAPER
@@ -223,7 +207,6 @@ p2.add_run('Austin, TX, USA')
 p2.paragraph_format.space_after = Pt(6)
 
 # ── Switch to two columns — NO page break ──
-add_section_break_cols(2)
 
 # ═══════ ABSTRACT ═══════
 doc.add_paragraph('ABSTRACT', style='SectionHead')
@@ -411,14 +394,12 @@ add_body(
 )
 
 # Full-width figures
-add_section_break_cols(1)
 add_figure('fig1_mask_memory.png',
     'Figure 1. Attention mask memory. Red = Dense (float32, O(n\u00b2)), '
     'Blue = Roaring Bitmap (O(n)). Log scale on both axes.', Inches(5.0))
 add_figure('fig2_compression_ratio.png',
     'Figure 2. Compression ratio (Dense \u00f7 Roaring) vs sequence length for three '
     'window sizes. The ratio scales linearly and is independent of window size.', Inches(5.0))
-add_section_break_cols(2)
 
 # 5.2 Gradient Compression
 doc.add_paragraph('5.2 Gradient Index Compression', style='SubsectionHead')
@@ -436,11 +417,9 @@ add_body(
     'Containers. Compression improves with parameter count.'
 )
 
-add_section_break_cols(1)
 add_figure('fig5_gradient_compression.png',
     'Figure 3. Gradient index compression ratio across parameter counts at three '
-    'sparsity levels. Green = Top-0.1%, Blue = Top-1%, Red = Top-10%.', Inches(5.0))
-add_section_break_cols(2)
+    'sparsity levels. Green = Top-0.1%, Blue = Top-1%, Red = Top-10%.')
 
 # 5.3 Training Convergence
 doc.add_paragraph('5.3 Training Convergence', style='SubsectionHead')
@@ -459,13 +438,11 @@ add_body(
     'realization cost. Pruning removes 30% of weights with 6\u00d7 mask compression.'
 )
 
-add_section_break_cols(1)
 add_figure('fig3_training_loss.png',
     'Figure 4. Training loss convergence over 200 steps (mean \u00b1 std, 3 seeds). '
     'Red = Vanilla Transformer, Blue = Roaring Transformer.', Inches(5.0))
 add_figure('fig4_step_time.png',
-    'Figure 5. Average per-step training time with \u00b11 std error bars.', Inches(4.0))
-add_section_break_cols(2)
+    'Figure 5. Average per-step training time with \u00b11 std error bars.')
 
 # 5.4 Window Ablation
 doc.add_paragraph('5.4 Window Size Ablation', style='SubsectionHead')
@@ -479,10 +456,8 @@ add_body(
     'encodes any contiguous range in constant space.'
 )
 
-add_section_break_cols(1)
 add_figure('fig6_window_ablation.png',
-    'Figure 6. Window size ablation. Final loss is stable across all window sizes.', Inches(4.5))
-add_section_break_cols(2)
+    'Figure 6. Window size ablation. Final loss is stable across all window sizes.')
 
 # 5.5 Sparsity Ablation
 doc.add_paragraph('5.5 Gradient Sparsity Ablation', style='SubsectionHead')
@@ -492,11 +467,9 @@ add_plain_table('Table 7: Gradient Sparsity Ablation',
      ['1.0%','8.5351','1.32\u00d7'],['5.0%','8.5351','1.33\u00d7'],
      ['10%','8.5351','1.46\u00d7'],['50%','8.5351','1.84\u00d7']])
 
-add_section_break_cols(1)
 add_figure('fig7_sparsity_ablation.png',
     'Figure 7. Gradient sparsity ablation. Left: training loss remains stable. '
-    'Right: communication compression increases with sparsity.', Inches(5.5))
-add_section_break_cols(2)
+    'Right: communication compression increases with sparsity.')
 
 # ═══════ 6. DISCUSSION ═══════
 doc.add_paragraph('6. DISCUSSION', style='SectionHead')
@@ -510,11 +483,9 @@ add_body(
     'realization entirely.'
 )
 
-add_section_break_cols(1)
 add_figure('fig8_mask_creation_time.png',
     'Figure 8. Mask creation time. Red = Dense, Blue = Roaring. '
-    'Roaring is consistently 5\u20139\u00d7 faster across all sequence lengths.', Inches(5.0))
-add_section_break_cols(2)
+    'Roaring is consistently 5\u20139\u00d7 faster across all sequence lengths.')
 
 doc.add_paragraph('6.2 Comparison with FlashAttention', style='SubsectionHead')
 add_body(
