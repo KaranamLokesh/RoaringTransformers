@@ -5,3 +5,5 @@ matplotlib>=3.7
 psutil>=5.9
 datasets>=2.14
 tokenizers>=0.13
+tiktoken>=0.5
+scipy>=1.10

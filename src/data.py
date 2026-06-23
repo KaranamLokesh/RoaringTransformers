@@ -71,10 +71,60 @@ class WikiTextDataset(Dataset):
         return chunk[:-1], chunk[1:]
 
 
+class BPELMDataset(Dataset):
+    """Real-corpus language modeling dataset with GPT-2 BPE tokenization.
+
+    Loads WikiText-103 (or WikiText-2) via HuggingFace `datasets`, tokenizes
+    the full split with the standard GPT-2 byte-level BPE (`tiktoken`), and
+    chunks the concatenated token stream into non-overlapping blocks of
+    `seq_len + 1`. Unlike the whitespace `WikiTextDataset`, this yields a
+    real subword vocabulary so that validation perplexity reflects genuine
+    language modeling rather than synthetic-data entropy.
+
+    `max_tokens` caps the number of tokens used (useful for a budget GPU run).
+    """
+
+    GPT2_VOCAB_SIZE = 50257
+
+    def __init__(self, seq_len, config='wikitext-103-raw-v1', split='train',
+                 max_tokens=None):
+        self.seq_len = seq_len
+        self.vocab_size = self.GPT2_VOCAB_SIZE
+
+        import tiktoken
+        from datasets import load_dataset
+
+        enc = tiktoken.get_encoding('gpt2')
+        ds = load_dataset('Salesforce/wikitext', config, split=split)
+        text = '\n'.join(t for t in ds['text'] if t.strip())
+        ids = enc.encode_ordinary(text)
+        if max_tokens is not None:
+            ids = ids[:max_tokens]
+        self.tokens = torch.tensor(ids, dtype=torch.long)
+
+    def __len__(self):
+        return max(0, (len(self.tokens) - 1) // self.seq_len)
+
+    def __getitem__(self, idx):
+        start = idx * self.seq_len
+        chunk = self.tokens[start:start + self.seq_len + 1]
+        return chunk[:-1], chunk[1:]
+
+
 def get_dataloader(dataset_type='synthetic', vocab_size=10000, seq_len=512,
-                   batch_size=16, num_samples=1000, split='train'):
-    """Create a DataLoader for experiments."""
-    if dataset_type == 'wikitext':
+                   batch_size=16, num_samples=1000, split='train',
+                   config='wikitext-103-raw-v1', max_tokens=None):
+    """Create a DataLoader for experiments.
+
+    dataset_type:
+        'synthetic'   -> random tokens (legacy, for the toy convergence run)
+        'wikitext'    -> WikiText-2, whitespace tokenizer (legacy)
+        'bpe'         -> WikiText-103/2 with GPT-2 BPE (recommended, real corpus)
+    """
+    if dataset_type == 'bpe':
+        dataset = BPELMDataset(seq_len, config=config, split=split,
+                               max_tokens=max_tokens)
+    elif dataset_type == 'wikitext':
         dataset = WikiTextDataset(seq_len, split=split, vocab_size=vocab_size)
     else:
         dataset = SyntheticLMDataset(vocab_size, seq_len, num_samples=num_samples)
