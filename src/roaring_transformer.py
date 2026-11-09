@@ -3,10 +3,13 @@ Roaring Transformer — full Transformer language model that integrates
 Roaring Bitmaps for attention mask management, gradient compression,
 and weight pruning.
 
-Same architecture as VanillaTransformer but with three Roaring optimizations:
-1. Attention masks stored as Roaring Bitmaps (memory savings)
-2. Gradient compression via Top-K + Roaring index encoding (comm savings)
-3. Post-warmup weight pruning tracked via Roaring Bitmaps (FLOPs savings)
+Same architecture as VanillaTransformer but with three Roaring components:
+1. Attention mask stored as a Roaring Bitmap on the host, realized to a dense
+   tensor once per sequence length and cached (accelerator memory is unchanged)
+2. Top-K gradient index encoding via Roaring (compress_gradients() reports
+   payload sizes; it does not replace the optimizer's gradient exchange)
+3. Post-warmup magnitude pruning with surviving indices tracked in Roaring
+   Bitmaps (pruned weights are zeroed; compute stays dense)
 """
 
 import torch
