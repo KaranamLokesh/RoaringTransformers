@@ -9,7 +9,7 @@ earlier generated file.
 
 What gets highlighted:
   1. Every passage that was yellow in the v4 highlighted manuscript -- i.e. every
-     change since the version the reviewers last saw -- transferred onto the
+     change since the previously submitted version -- transferred onto the
      author's edited text by matching.
   2. The v5 re-measurement changes (the A-patch replacements and the rewritten
      numeric rows of Tables 5 to 8), so the corrected numbers are marked too.
