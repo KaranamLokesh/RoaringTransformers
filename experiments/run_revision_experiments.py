@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Revision experiments for "The Roaring Transformer" (reviewer response).
+Revision experiments for "The Roaring Transformer".
 
-Addresses the consistent reviewer concerns by replacing the toy/synthetic/CPU
-evaluation with a real-corpus, GPU-capable, statistically-tested benchmark:
+Replaces the toy/synthetic/CPU evaluation with a real-corpus, GPU-capable,
+statistically-tested benchmark:
 
-  R#1,#2,#3,#4  Toy model + synthetic data    -> >=10M-param model on WikiText-103
-  R#1,#2,#3,#4  CPU-only, no GPU              -> auto-detects and runs on CUDA
-  R#1,#2,#4     Random-token convergence      -> real BPE corpus, validation perplexity
-  R#2,#3        Only 3 seeds, no sig. test    -> N seeds + Welch t-test + Mann-Whitney U
-  R#2,#5        Hydration overhead unmeasured -> per-seq-len cold-hydration profile,
-                                                 amortized per-step cost, GPU peak VRAM
+  Toy model + synthetic data    -> >=10M-param model on WikiText-103
+  CPU-only, no GPU              -> auto-detects and runs on CUDA
+  Random-token convergence      -> real BPE corpus, validation perplexity
+  Only 3 seeds, no sig. test    -> N seeds + Welch t-test + Mann-Whitney U
+  Hydration overhead unmeasured -> per-seq-len cold-hydration profile,
+                                 amortized per-step cost, GPU peak VRAM
 
 Usage (cloud GPU, full run):
     python experiments/run_revision_experiments.py --dataset bpe \
@@ -128,7 +128,7 @@ def train_one(model, train_loader, val_loader, num_steps, device, name,
 
 
 # --------------------------------------------------------------------------- #
-# Hydration overhead profiling  (Reviewer #5 + #2 item 9 + #4 "fatal limitation")
+# Hydration overhead profiling
 # --------------------------------------------------------------------------- #
 def profile_hydration(seq_lengths, window_size, device, num_forward_passes=2000):
     """Measure the cost of realizing a Roaring mask into a dense GPU tensor.
@@ -187,7 +187,7 @@ def profile_hydration(seq_lengths, window_size, device, num_forward_passes=2000)
 
 
 # --------------------------------------------------------------------------- #
-# Statistics  (Reviewer #2 + #3: seeds + significance test for equivalence)
+# Statistics: seeds + significance test for equivalence
 # --------------------------------------------------------------------------- #
 def equivalence_stats(vanilla_vals, roaring_vals):
     from scipy import stats

@@ -261,7 +261,7 @@ def build(highlight, use_template=False):
                   'delta-plus-varint, zlib, zstd and lzma. Roaring does not win on '
                   'size, and we report that negative result in full.]]')
     b.numbered(2, '[[A composition study over two workloads and six representations, '
-                  'including Reviewer-suggested purpose-built run arrays and a general '
+                  'including purpose-built run arrays and a general '
                   'sparse matrix, each given its fastest correct form. Roaring loses '
                   'whenever every component is row-invariant and wins whenever any '
                   'component is not.]]')

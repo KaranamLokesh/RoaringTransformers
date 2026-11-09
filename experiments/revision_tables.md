@@ -1,13 +1,15 @@
 # Regenerated tables (round-2 revision)
 
+> Historical snapshot from the second revision round, written by `generate_revision_outputs.py`. Table numbers below are that round's. In the current paper (v6) they are Table 4 (mask size), Table 5 (gradient index), Table 11 (convergence), Table 12 (pruning) and Table 10 (window ablation). The window-ablation timings were re-measured with their min-max spread for v6 (`run_v6_measurements.py`), and the convergence comparison gained a TOST equivalence test (`run_v6_stats.py`). See the README "Reproducing" section for the current table-to-script mapping.
+
 Source: `revision_main.json` / `revision_pruned.json` (wikitext-103-raw-v1, 17,735,936 params, 5 seeds, 2000 steps, seq_len=512, window=256, device=cuda).
 
-All CPU measurements below use window=256, matching the training default (was window=128 in the submitted Table 3 — R3.4).
+All CPU measurements below use window=256, matching the training default (was window=128 in the submitted Table 3).
 
 
 ## Table 3 — attention mask representation size (KB)
 
-Held constant: causal sliding-window pattern, window=256, one mask per sequence length. Dense float32 is the worst-case baseline; the remaining columns are the trivial baselines R1 asked for.
+Held constant: causal sliding-window pattern, window=256, one mask per sequence length. Dense float32 is the worst-case baseline; the remaining columns are trivial purpose-built baselines.
 
 | Seq len | Dense f32 | Packed bitset | (start,len)/row | zstd(bitset) | lzma(bitset) | Roaring per-row (published) | Roaring flat+opt |
 |---|---|---|---|---|---|---|---|
@@ -21,7 +23,7 @@ Held constant: causal sliding-window pattern, window=256, one mask per sequence 
 
 ## Table 4 — Top-K gradient index encoding (bytes)
 
-Adds the 17.7M row to match the trained model (R3.4) and the delta+varint baseline (R1.2). Ratios are index-payload only.
+Adds the 17.7M row to match the trained model and the delta+varint baseline. Ratios are index-payload only.
 
 | Params | Sparsity | k | Raw uint32 | Roaring | delta+varint | zstd(bitset) | Roaring vs raw | Best |
 |---|---|---|---|---|---|---|---|---|
@@ -71,16 +73,16 @@ Adds the 17.7M row to match the trained model (R3.4) and the delta+varint baseli
 | Mask memory @ seq_len=512 | 1,024.0 KB | 7.5 KB |
 | Mask compression vs dense f32 | 1.0x | 136.5x |
 
-Equivalence: Welch p=0.364, Mann-Whitney p=0.222 (fail to reject equality).
+Equivalence: Welch p=0.364, Mann-Whitney p=0.222 (fail to reject equality). The v6 paper adds a TOST test against a +/-0.05 nat margin (`run_v6_stats.py`, `v6_stats.json`).
 
 **Changes from the submitted Table 5:**
 
 1. Mask memory was reported as 256.0 KB / 3.8 KB / 68.2x — those are seq_len=256 values. At the actual seq_len=512 they are 1,024.0 KB / 7.5 KB / 136.5x.
 2. The "Grad Compression 1.32x" row came from the synthetic `paper_results.json` sparsity ablation, not this run. Removed pending a real measurement.
-3. The "Pruned Ratio 30.0%" and "Prune Mask Compr. 6.0x" rows were from a separate pruning ablation while the text states pruning is disabled here (R1.3). Split out below.
-4. Step time now carries its standard deviation. The 3.19 ms gap is statistically significant but is a **baseline artifact**: `VanillaTransformer._create_dense_mask` rebuilds the mask every forward pass with a 512-iteration Python loop, while `RoaringTransformer` caches it. Any dense-mask caching yields the same gain (R3.2). The vanilla sd of 1.02 ms vs Roaring's 0.06 ms is the signature of that per-step rebuild.
+3. The "Pruned Ratio 30.0%" and "Prune Mask Compr. 6.0x" rows were from a separate pruning ablation while the text states pruning is disabled here. Split out below.
+4. Step time now carries its standard deviation. The 3.19 ms gap is statistically significant but is a **baseline artifact**: `VanillaTransformer._create_dense_mask` rebuilds the mask every forward pass with a 512-iteration Python loop, while `RoaringTransformer` caches it. Any dense-mask caching yields the same gain. The vanilla sd of 1.02 ms vs Roaring's 0.06 ms is the signature of that per-step rebuild.
 
-## Pruning ablation (separated from Table 5 per R1.3)
+## Pruning ablation (separated from Table 5)
 
 | Metric | Vanilla | Roaring + 30% pruning |
 |---|---|---|
@@ -103,6 +105,6 @@ At seq_len=8,192. The submitted Table 6 claimed the compression ratio is invaria
 | 1024 | 11.7% | 42.1 | 2.0 | 6,222x | 0.16 | 4.71 | 29.4x |
 | full | 50.0% | 42.1 | 9.9 | 6,222x | 0.15 | 4.90 | 31.8x |
 
-## Still outstanding (requires a GPU training run)
+## Not measured (would require a GPU training run)
 
-- The **training-loss** arm of the window-size ablation (loss is stable across window sizes) and the **gradient-sparsity** ablation both require training runs. `run_revision_experiments.py` implements neither; they need to be added and run on WikiText-103.
+- The **training-loss** arm of the window-size ablation and a **gradient-sparsity** training ablation. `run_revision_experiments.py` implements neither, and the paper does not report them; both ablations are reported at the representation level only.

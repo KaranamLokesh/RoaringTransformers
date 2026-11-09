@@ -1,12 +1,10 @@
 """
 Roaring Bitmap-based weight pruning.
 
-After a warm-up phase, identifies near-zero weights and stores a pruning
-mask as Roaring Bitmaps. During forward passes, the mask is applied to
-skip computations for "dead" weights, reducing effective FLOPs.
-
-This is the inference-optimization angle: train normally, then prune with
-Roaring-tracked masks.
+After a warm-up phase, identifies the smallest-magnitude weights and stores
+the indices of the surviving weights as Roaring Bitmaps. apply_masks() zeroes
+the pruned weights in place; the forward pass is still a dense matmul, so
+this tracks sparsity but does not reduce FLOPs by itself.
 """
 
 import torch

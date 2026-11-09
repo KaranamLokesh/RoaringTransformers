@@ -7,9 +7,9 @@ Fixes the round-2 defects:
     while Table 5 came from revision_main.json (WikiText-103, seq_len=512, CUDA).
     Figure 5 therefore contradicted Table 5 (57.2/56.4 ms vs 172.0/168.8 ms).
   * Table 5's mask-memory row reported seq_len=256 values for a seq_len=512 run.
-  * Table 3 used window=128 while the training default is 256 (R3.4).
-  * Table 4 stopped at 10M params though the model has 17.7M (R3.4).
-  * No trivial baselines anywhere (R1.1, R1.2).
+  * Table 3 used window=128 while the training default is 256.
+  * Table 4 stopped at 10M params though the model has 17.7M.
+  * No trivial baselines anywhere.
 
 Still requires a GPU run (NOT produced here): Tables 6 and 7, the window-size and
 gradient-sparsity ablations, which need training and do not exist in
@@ -41,7 +41,7 @@ from run_baseline_comparison import build_flat, delta_varint_size, ZSTD  # noqa:
 OUT_FIG = os.path.join(HERE, 'figures_revision')
 OUT_TAB = os.path.join(HERE, 'revision_tables.md')
 ZSTD = zstd.ZstdCompressor(level=6)
-WINDOW = 256          # matches the training default (R3.4)
+WINDOW = 256          # matches the training default
 SEQ_LENS = [256, 512, 1024, 2048, 4096, 8192, 16384]
 
 plt.rcParams.update({'figure.dpi': 150, 'font.size': 10,
@@ -316,17 +316,18 @@ def write_tables(ms, gi, main, pruned, wa):
 
     L = []
     L.append('# Regenerated tables (round-2 revision)\n')
+    L.append('> Historical snapshot from the second revision round, written by `generate_revision_outputs.py`. Table numbers below are that round\'s. In the current paper (v6) they are Table 4 (mask size), Table 5 (gradient index), Table 11 (convergence), Table 12 (pruning) and Table 10 (window ablation). The window-ablation timings were re-measured with their min-max spread for v6 (`run_v6_measurements.py`), and the convergence comparison gained a TOST equivalence test (`run_v6_stats.py`). See the README "Reproducing" section for the current table-to-script mapping.\n')
     L.append(f"Source: `revision_main.json` / `revision_pruned.json` "
              f"({m['config']}, {m['n_params']:,} params, {m['seeds']} seeds, "
              f"{m['steps']} steps, seq_len={seq}, window={m['model_cfg']['window_size']}, "
              f"device={m['device']}).\n")
     L.append('All CPU measurements below use window=256, matching the training '
-             'default (was window=128 in the submitted Table 3 — R3.4).\n')
+             'default (was window=128 in the submitted Table 3).\n')
 
     L.append('\n## Table 3 — attention mask representation size (KB)\n')
     L.append('Held constant: causal sliding-window pattern, window=256, one mask per '
              'sequence length. Dense float32 is the worst-case baseline; the remaining '
-             'columns are the trivial baselines R1 asked for.\n')
+             'columns are trivial purpose-built baselines.\n')
     L.append('| Seq len | Dense f32 | Packed bitset | (start,len)/row | zstd(bitset) | '
              'lzma(bitset) | Roaring per-row (published) | Roaring flat+opt |')
     L.append('|---|---|---|---|---|---|---|---|')
@@ -338,8 +339,8 @@ def write_tables(ms, gi, main, pruned, wa):
                  f"**{r['roaring_flat_opt_bytes']/1024:,.1f}** |")
 
     L.append('\n## Table 4 — Top-K gradient index encoding (bytes)\n')
-    L.append('Adds the 17.7M row to match the trained model (R3.4) and the '
-             'delta+varint baseline (R1.2). Ratios are index-payload only.\n')
+    L.append('Adds the 17.7M row to match the trained model and the '
+             'delta+varint baseline. Ratios are index-payload only.\n')
     L.append('| Params | Sparsity | k | Raw uint32 | Roaring | delta+varint | '
              'zstd(bitset) | Roaring vs raw | Best |')
     L.append('|---|---|---|---|---|---|---|---|---|')
@@ -364,7 +365,9 @@ def write_tables(ms, gi, main, pruned, wa):
     L.append(f"| Mask compression vs dense f32 | 1.0x | "
              f"{row['dense_f32_bytes']/1024/hyd['roaring_cpu_kb']:.1f}x |")
     L.append(f"\nEquivalence: Welch p={eq['welch_p']:.3f}, "
-             f"Mann-Whitney p={eq['mannwhitney_p']:.3f} (fail to reject equality).\n")
+             f"Mann-Whitney p={eq['mannwhitney_p']:.3f} (fail to reject equality). "
+             f"The v6 paper adds a TOST test against a +/-0.05 nat margin "
+             f"(`run_v6_stats.py`, `v6_stats.json`).\n")
     L.append('**Changes from the submitted Table 5:**\n')
     L.append(f"1. Mask memory was reported as 256.0 KB / 3.8 KB / 68.2x — those are "
              f"seq_len=256 values. At the actual seq_len={seq} they are "
@@ -375,16 +378,16 @@ def write_tables(ms, gi, main, pruned, wa):
              'a real measurement.')
     L.append('3. The "Pruned Ratio 30.0%" and "Prune Mask Compr. 6.0x" rows were from '
              'a separate pruning ablation while the text states pruning is disabled '
-             'here (R1.3). Split out below.')
+             'here. Split out below.')
     L.append(f"4. Step time now carries its standard deviation. The "
              f"{v_ms - r_ms:.2f} ms gap is statistically significant but is a "
              f"**baseline artifact**: `VanillaTransformer._create_dense_mask` rebuilds "
              f"the mask every forward pass with a {seq}-iteration Python loop, while "
              f"`RoaringTransformer` caches it. Any dense-mask caching yields the same "
-             f"gain (R3.2). The vanilla sd of {v_mssd:.2f} ms vs Roaring's {r_mssd:.2f} ms "
+             f"gain. The vanilla sd of {v_mssd:.2f} ms vs Roaring's {r_mssd:.2f} ms "
              f"is the signature of that per-step rebuild.")
 
-    L.append('\n## Pruning ablation (separated from Table 5 per R1.3)\n')
+    L.append('\n## Pruning ablation (separated from Table 5)\n')
     L.append('| Metric | Vanilla | Roaring + 30% pruning |')
     L.append('|---|---|---|')
     L.append(f"| Final val. loss (ppl) | {pe['vanilla_mean']:.2f} "
@@ -408,11 +411,11 @@ def write_tables(ms, gi, main, pruned, wa):
                  f"{r['compose_flat_ms']:.2f} | {r['compose_dense_ms']:.2f} | "
                  f"{r['speedup']:.1f}x |")
 
-    L.append('\n## Still outstanding (requires a GPU training run)\n')
-    L.append('- The **training-loss** arm of the window-size ablation (loss is stable '
-             'across window sizes) and the **gradient-sparsity** ablation both require '
-             'training runs. `run_revision_experiments.py` implements neither; they '
-             'need to be added and run on WikiText-103.')
+    L.append('\n## Not measured (would require a GPU training run)\n')
+    L.append('- The **training-loss** arm of the window-size ablation and a **gradient-sparsity** '
+             'training ablation. `run_revision_experiments.py` implements neither, and the '
+             'paper does not report them; both ablations are reported at the '
+             'representation level only.')
     with open(OUT_TAB, 'w') as f:
         f.write('\n'.join(L) + '\n')
 
