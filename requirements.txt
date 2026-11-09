@@ -7,3 +7,4 @@ datasets>=2.14
 tokenizers>=0.13
 tiktoken>=0.5
 scipy>=1.10
+zstandard>=0.22

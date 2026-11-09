@@ -1,0 +1,540 @@
+{
+  "mask_scaling": [
+    {
+      "seq_len": 256,
+      "dense_f32_bytes": 262144,
+      "packed_bitset_bytes": 8192,
+      "startlen_bytes": 2048,
+      "zstd_bytes": 107,
+      "lzma_bytes": 324,
+      "roaring_per_row_bytes": 3848,
+      "roaring_flat_opt_bytes": 1035,
+      "dense_build_ms": 10.536916030105203,
+      "roaring_per_row_build_ms": 0.32933399779722095,
+      "roaring_flat_build_ms": 0.3689590375870466
+    },
+    {
+      "seq_len": 512,
+      "dense_f32_bytes": 1048576,
+      "packed_bitset_bytes": 32768,
+      "startlen_bytes": 4096,
+      "zstd_bytes": 212,
+      "lzma_bytes": 316,
+      "roaring_per_row_bytes": 7688,
+      "roaring_flat_opt_bytes": 2093,
+      "dense_build_ms": 1.2044159811921418,
+      "roaring_per_row_build_ms": 0.4974580369889736,
+      "roaring_flat_build_ms": 1.4392500161193311
+    },
+    {
+      "seq_len": 1024,
+      "dense_f32_bytes": 4194304,
+      "packed_bitset_bytes": 131072,
+      "startlen_bytes": 8192,
+      "zstd_bytes": 281,
+      "lzma_bytes": 264,
+      "roaring_per_row_bytes": 15368,
+      "roaring_flat_opt_bytes": 4262,
+      "dense_build_ms": 2.5232500047422945,
+      "roaring_per_row_build_ms": 0.3309999592602253,
+      "roaring_flat_build_ms": 4.602957982569933
+    },
+    {
+      "seq_len": 2048,
+      "dense_f32_bytes": 16777216,
+      "packed_bitset_bytes": 524288,
+      "startlen_bytes": 16384,
+      "zstd_bytes": 383,
+      "lzma_bytes": 308,
+      "roaring_per_row_bytes": 30728,
+      "roaring_flat_opt_bytes": 8844,
+      "dense_build_ms": 4.357290978077799,
+      "roaring_per_row_build_ms": 0.6158329779282212,
+      "roaring_flat_build_ms": 10.716249991673976
+    },
+    {
+      "seq_len": 4096,
+      "dense_f32_bytes": 67108864,
+      "packed_bitset_bytes": 2097152,
+      "startlen_bytes": 32768,
+      "zstd_bytes": 554,
+      "lzma_bytes": 620,
+      "roaring_per_row_bytes": 61448,
+      "roaring_flat_opt_bytes": 18980,
+      "dense_build_ms": 20.576459006406367,
+      "roaring_per_row_build_ms": 1.2347910087555647,
+      "roaring_flat_build_ms": 23.59466697089374
+    },
+    {
+      "seq_len": 8192,
+      "dense_f32_bytes": 268435456,
+      "packed_bitset_bytes": 8388608,
+      "startlen_bytes": 65536,
+      "zstd_bytes": 1138,
+      "lzma_bytes": 1636,
+      "roaring_per_row_bytes": 122888,
+      "roaring_flat_opt_bytes": 43140,
+      "dense_build_ms": 79.59300000220537,
+      "roaring_per_row_build_ms": 2.4958339636214077,
+      "roaring_flat_build_ms": 48.883415991440415
+    },
+    {
+      "seq_len": 16384,
+      "dense_f32_bytes": 1073741824,
+      "packed_bitset_bytes": 33554432,
+      "startlen_bytes": 131072,
+      "zstd_bytes": 3464,
+      "lzma_bytes": 5364,
+      "roaring_per_row_bytes": 245768,
+      "roaring_flat_opt_bytes": 107012,
+      "dense_build_ms": 296.7622090363875,
+      "roaring_per_row_build_ms": 5.186207999940962,
+      "roaring_flat_build_ms": 123.58091701753438
+    }
+  ],
+  "gradient_index": [
+    {
+      "n_params": 50000,
+      "sparsity": 0.001,
+      "k": 50,
+      "raw_u32_bytes": 200,
+      "roaring_bytes": 116,
+      "delta_varint_bytes": 89,
+      "zstd_bitset_bytes": 181,
+      "roaring_vs_raw": 1.7241379310344827
+    },
+    {
+      "n_params": 50000,
+      "sparsity": 0.005,
+      "k": 250,
+      "raw_u32_bytes": 1000,
+      "roaring_bytes": 516,
+      "delta_varint_bytes": 377,
+      "zstd_bitset_bytes": 514,
+      "roaring_vs_raw": 1.937984496124031
+    },
+    {
+      "n_params": 50000,
+      "sparsity": 0.01,
+      "k": 500,
+      "raw_u32_bytes": 2000,
+      "roaring_bytes": 1016,
+      "delta_varint_bytes": 632,
+      "zstd_bitset_bytes": 879,
+      "roaring_vs_raw": 1.968503937007874
+    },
+    {
+      "n_params": 50000,
+      "sparsity": 0.05,
+      "k": 2500,
+      "raw_u32_bytes": 10000,
+      "roaring_bytes": 5016,
+      "delta_varint_bytes": 2504,
+      "zstd_bitset_bytes": 2367,
+      "roaring_vs_raw": 1.9936204146730463
+    },
+    {
+      "n_params": 50000,
+      "sparsity": 0.1,
+      "k": 5000,
+      "raw_u32_bytes": 20000,
+      "roaring_bytes": 8208,
+      "delta_varint_bytes": 5000,
+      "zstd_bitset_bytes": 3450,
+      "roaring_vs_raw": 2.4366471734892787
+    },
+    {
+      "n_params": 100000,
+      "sparsity": 0.001,
+      "k": 100,
+      "raw_u32_bytes": 400,
+      "roaring_bytes": 224,
+      "delta_varint_bytes": 197,
+      "zstd_bitset_bytes": 293,
+      "roaring_vs_raw": 1.7857142857142858
+    },
+    {
+      "n_params": 100000,
+      "sparsity": 0.005,
+      "k": 500,
+      "raw_u32_bytes": 2000,
+      "roaring_bytes": 1024,
+      "delta_varint_bytes": 763,
+      "zstd_bitset_bytes": 991,
+      "roaring_vs_raw": 1.953125
+    },
+    {
+      "n_params": 100000,
+      "sparsity": 0.01,
+      "k": 1000,
+      "raw_u32_bytes": 4000,
+      "roaring_bytes": 2024,
+      "delta_varint_bytes": 1283,
+      "zstd_bitset_bytes": 1668,
+      "roaring_vs_raw": 1.976284584980237
+    },
+    {
+      "n_params": 100000,
+      "sparsity": 0.05,
+      "k": 5000,
+      "raw_u32_bytes": 20000,
+      "roaring_bytes": 10024,
+      "delta_varint_bytes": 5006,
+      "zstd_bitset_bytes": 4654,
+      "roaring_vs_raw": 1.9952114924181963
+    },
+    {
+      "n_params": 100000,
+      "sparsity": 0.1,
+      "k": 10000,
+      "raw_u32_bytes": 40000,
+      "roaring_bytes": 15096,
+      "delta_varint_bytes": 10000,
+      "zstd_bitset_bytes": 6850,
+      "roaring_vs_raw": 2.649708532061473
+    },
+    {
+      "n_params": 500000,
+      "sparsity": 0.001,
+      "k": 500,
+      "raw_u32_bytes": 2000,
+      "roaring_bytes": 1072,
+      "delta_varint_bytes": 944,
+      "zstd_bitset_bytes": 1330,
+      "roaring_vs_raw": 1.8656716417910448
+    },
+    {
+      "n_params": 500000,
+      "sparsity": 0.005,
+      "k": 2500,
+      "raw_u32_bytes": 10000,
+      "roaring_bytes": 5072,
+      "delta_varint_bytes": 3840,
+      "zstd_bitset_bytes": 4917,
+      "roaring_vs_raw": 1.971608832807571
+    },
+    {
+      "n_params": 500000,
+      "sparsity": 0.01,
+      "k": 5000,
+      "raw_u32_bytes": 20000,
+      "roaring_bytes": 10072,
+      "delta_varint_bytes": 6401,
+      "zstd_bitset_bytes": 8300,
+      "roaring_vs_raw": 1.9857029388403495
+    },
+    {
+      "n_params": 500000,
+      "sparsity": 0.05,
+      "k": 25000,
+      "raw_u32_bytes": 100000,
+      "roaring_bytes": 50072,
+      "delta_varint_bytes": 25030,
+      "zstd_bitset_bytes": 23582,
+      "roaring_vs_raw": 1.9971241412366192
+    },
+    {
+      "n_params": 500000,
+      "sparsity": 0.1,
+      "k": 50000,
+      "raw_u32_bytes": 200000,
+      "roaring_bytes": 65608,
+      "delta_varint_bytes": 50000,
+      "zstd_bitset_bytes": 34496,
+      "roaring_vs_raw": 3.0484087306426044
+    },
+    {
+      "n_params": 1000000,
+      "sparsity": 0.001,
+      "k": 1000,
+      "raw_u32_bytes": 4000,
+      "roaring_bytes": 2136,
+      "delta_varint_bytes": 1889,
+      "zstd_bitset_bytes": 2624,
+      "roaring_vs_raw": 1.8726591760299625
+    },
+    {
+      "n_params": 1000000,
+      "sparsity": 0.005,
+      "k": 5000,
+      "raw_u32_bytes": 20000,
+      "roaring_bytes": 10136,
+      "delta_varint_bytes": 7667,
+      "zstd_bitset_bytes": 9778,
+      "roaring_vs_raw": 1.973164956590371
+    },
+    {
+      "n_params": 1000000,
+      "sparsity": 0.01,
+      "k": 10000,
+      "raw_u32_bytes": 40000,
+      "roaring_bytes": 20136,
+      "delta_varint_bytes": 12858,
+      "zstd_bitset_bytes": 16563,
+      "roaring_vs_raw": 1.986491855383393
+    },
+    {
+      "n_params": 1000000,
+      "sparsity": 0.05,
+      "k": 50000,
+      "raw_u32_bytes": 200000,
+      "roaring_bytes": 100136,
+      "delta_varint_bytes": 50075,
+      "zstd_bitset_bytes": 47125,
+      "roaring_vs_raw": 1.9972836941759207
+    },
+    {
+      "n_params": 1000000,
+      "sparsity": 0.1,
+      "k": 100000,
+      "raw_u32_bytes": 400000,
+      "roaring_bytes": 126380,
+      "delta_varint_bytes": 100000,
+      "zstd_bitset_bytes": 69372,
+      "roaring_vs_raw": 3.165057762304162
+    },
+    {
+      "n_params": 5000000,
+      "sparsity": 0.001,
+      "k": 5000,
+      "raw_u32_bytes": 20000,
+      "roaring_bytes": 10624,
+      "delta_varint_bytes": 9421,
+      "zstd_bitset_bytes": 12816,
+      "roaring_vs_raw": 1.8825301204819278
+    },
+    {
+      "n_params": 5000000,
+      "sparsity": 0.005,
+      "k": 25000,
+      "raw_u32_bytes": 100000,
+      "roaring_bytes": 50624,
+      "delta_varint_bytes": 38216,
+      "zstd_bitset_bytes": 48450,
+      "roaring_vs_raw": 1.9753476611883691
+    },
+    {
+      "n_params": 5000000,
+      "sparsity": 0.01,
+      "k": 50000,
+      "raw_u32_bytes": 200000,
+      "roaring_bytes": 100624,
+      "delta_varint_bytes": 64035,
+      "zstd_bitset_bytes": 81817,
+      "roaring_vs_raw": 1.9875973922722214
+    },
+    {
+      "n_params": 5000000,
+      "sparsity": 0.05,
+      "k": 250000,
+      "raw_u32_bytes": 1000000,
+      "roaring_bytes": 500624,
+      "delta_varint_bytes": 250371,
+      "zstd_bitset_bytes": 229640,
+      "roaring_vs_raw": 1.9975071111253155
+    },
+    {
+      "n_params": 5000000,
+      "sparsity": 0.1,
+      "k": 500000,
+      "raw_u32_bytes": 2000000,
+      "roaring_bytes": 626964,
+      "delta_varint_bytes": 500000,
+      "zstd_bitset_bytes": 336591,
+      "roaring_vs_raw": 3.1899758199832844
+    },
+    {
+      "n_params": 10000000,
+      "sparsity": 0.001,
+      "k": 10000,
+      "raw_u32_bytes": 40000,
+      "roaring_bytes": 21232,
+      "delta_varint_bytes": 18835,
+      "zstd_bitset_bytes": 25539,
+      "roaring_vs_raw": 1.8839487565938207
+    },
+    {
+      "n_params": 10000000,
+      "sparsity": 0.005,
+      "k": 50000,
+      "raw_u32_bytes": 200000,
+      "roaring_bytes": 101232,
+      "delta_varint_bytes": 76342,
+      "zstd_bitset_bytes": 96824,
+      "roaring_vs_raw": 1.9756598703967125
+    },
+    {
+      "n_params": 10000000,
+      "sparsity": 0.01,
+      "k": 100000,
+      "raw_u32_bytes": 400000,
+      "roaring_bytes": 201232,
+      "delta_varint_bytes": 127930,
+      "zstd_bitset_bytes": 163830,
+      "roaring_vs_raw": 1.9877554265723145
+    },
+    {
+      "n_params": 10000000,
+      "sparsity": 0.05,
+      "k": 500000,
+      "raw_u32_bytes": 2000000,
+      "roaring_bytes": 1001232,
+      "delta_varint_bytes": 500762,
+      "zstd_bitset_bytes": 460449,
+      "roaring_vs_raw": 1.9975390319126836
+    },
+    {
+      "n_params": 10000000,
+      "sparsity": 0.1,
+      "k": 1000000,
+      "raw_u32_bytes": 4000000,
+      "roaring_bytes": 1254036,
+      "delta_varint_bytes": 1000002,
+      "zstd_bitset_bytes": 676213,
+      "roaring_vs_raw": 3.1897010931105645
+    },
+    {
+      "n_params": 17735936,
+      "sparsity": 0.001,
+      "k": 17735,
+      "raw_u32_bytes": 70940,
+      "roaring_bytes": 37646,
+      "delta_varint_bytes": 33411,
+      "zstd_bitset_bytes": 45149,
+      "roaring_vs_raw": 1.884396748658556
+    },
+    {
+      "n_params": 17735936,
+      "sparsity": 0.005,
+      "k": 88679,
+      "raw_u32_bytes": 354716,
+      "roaring_bytes": 179534,
+      "delta_varint_bytes": 135612,
+      "zstd_bitset_bytes": 171938,
+      "roaring_vs_raw": 1.9757594661735383
+    },
+    {
+      "n_params": 17735936,
+      "sparsity": 0.01,
+      "k": 177359,
+      "raw_u32_bytes": 709436,
+      "roaring_bytes": 356894,
+      "delta_varint_bytes": 226906,
+      "zstd_bitset_bytes": 290576,
+      "roaring_vs_raw": 1.9878059031533173
+    },
+    {
+      "n_params": 17735936,
+      "sparsity": 0.05,
+      "k": 886796,
+      "raw_u32_bytes": 3547184,
+      "roaring_bytes": 1775768,
+      "delta_varint_bytes": 888071,
+      "zstd_bitset_bytes": 818907,
+      "roaring_vs_raw": 1.997549229403841
+    },
+    {
+      "n_params": 17735936,
+      "sparsity": 0.1,
+      "k": 1773593,
+      "raw_u32_bytes": 7094372,
+      "roaring_bytes": 2222012,
+      "delta_varint_bytes": 1773594,
+      "zstd_bitset_bytes": 1201439,
+      "roaring_vs_raw": 3.1927694359886445
+    }
+  ],
+  "window_ablation": [
+    {
+      "window": 32,
+      "seq_len": 8192,
+      "density": 0.0040204524993896484,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 889,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.15045801410451531,
+      "compose_dense_ms": 4.676375014241785,
+      "speedup": 31.08093006593422
+    },
+    {
+      "window": 64,
+      "seq_len": 8192,
+      "density": 0.007903575897216797,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 919,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.14979200204834342,
+      "compose_dense_ms": 4.566750023514032,
+      "speedup": 30.487275429032408
+    },
+    {
+      "window": 128,
+      "seq_len": 8192,
+      "density": 0.015624046325683594,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 993,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.15291699673980474,
+      "compose_dense_ms": 4.701666010078043,
+      "speedup": 30.746523344806086
+    },
+    {
+      "window": 256,
+      "seq_len": 8192,
+      "density": 0.030881881713867188,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 1138,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.15454203821718693,
+      "compose_dense_ms": 4.562749993056059,
+      "speedup": 29.524329080245213
+    },
+    {
+      "window": 512,
+      "seq_len": 8192,
+      "density": 0.060665130615234375,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 1428,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.16212498303502798,
+      "compose_dense_ms": 4.610125033650547,
+      "speedup": 28.43562384616876
+    },
+    {
+      "window": 1024,
+      "seq_len": 8192,
+      "density": 0.11730194091796875,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 2008,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.16058399342000484,
+      "compose_dense_ms": 4.713875008746982,
+      "speedup": 29.354575810167564
+    },
+    {
+      "window": null,
+      "seq_len": 8192,
+      "density": 0.50006103515625,
+      "roaring_flat_opt_bytes": 43140,
+      "roaring_per_row_bytes": 122888,
+      "zstd_bytes": 10108,
+      "dense_f32_bytes": 268435456,
+      "compression_vs_dense": 6222.425961984238,
+      "compose_flat_ms": 0.153791974298656,
+      "compose_dense_ms": 4.895000020042062,
+      "speedup": 31.828709153159235
+    }
+  ]
+}

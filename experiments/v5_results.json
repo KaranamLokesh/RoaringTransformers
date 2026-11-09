@@ -1,0 +1,1047 @@
+{
+  "meta": {
+    "trials": 25,
+    "warmup": 5,
+    "repetitions": 3,
+    "window": 256,
+    "numpy": "2.5.0",
+    "scipy": "1.18.0",
+    "python": "3.13.5",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "wall_seconds": 220.7,
+    "note": "Timings only. Sizes and gradient-index encodings are deterministic and carried over from v4_results.json."
+  },
+  "composition_structured": [
+    {
+      "seq_len": 1024,
+      "window": 256,
+      "runs_per_row": 1.7412109375,
+      "cardinality": 235705,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 0.6190830026753247,
+      "roaring_per_row_spread": [
+        0.6177499890327454,
+        0.6250410224311054
+      ],
+      "roaring_flat_ms": 0.011208001524209976,
+      "roaring_flat_spread": [
+        0.011124997399747372,
+        0.011625001206994057
+      ],
+      "dense_ms": 0.0975410221144557,
+      "dense_spread": [
+        0.0939579913392663,
+        0.10191701585426927
+      ],
+      "packed_bitset_ms": 0.014541961718350649,
+      "packed_bitset_spread": [
+        0.014541030395776033,
+        0.014582998119294643
+      ],
+      "csr_ms": 1.4095840160734951,
+      "csr_spread": [
+        1.3671250198967755,
+        1.4315409935079515
+      ],
+      "zstd_then_dense_ms": 0.17808302072808146,
+      "zstd_then_dense_spread": [
+        0.17504196148365736,
+        0.1906669931486249
+      ],
+      "run_arrays_ms": 0.005791021976619959,
+      "run_arrays_spread": [
+        0.005709007382392883,
+        0.005916983354836702
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.005791021976619959,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.5166864015954132,
+      "margin_spread": [
+        0.49109735824871315,
+        0.5318637966577022
+      ]
+    },
+    {
+      "seq_len": 2048,
+      "window": 256,
+      "runs_per_row": 1.87060546875,
+      "cardinality": 507065,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 1.2447080225683749,
+      "roaring_per_row_spread": [
+        1.2211250141263008,
+        1.2609579716809094
+      ],
+      "roaring_flat_ms": 0.02462498378008604,
+      "roaring_flat_spread": [
+        0.024540990125387907,
+        0.02475001383572817
+      ],
+      "dense_ms": 0.3712500329129398,
+      "dense_spread": [
+        0.36408298183232546,
+        0.37633400643244386
+      ],
+      "packed_bitset_ms": 0.04858296597376466,
+      "packed_bitset_spread": [
+        0.04779099253937602,
+        0.04983402322977781
+      ],
+      "csr_ms": 2.930458984337747,
+      "csr_spread": [
+        2.8509590192697942,
+        2.953540999442339
+      ],
+      "zstd_then_dense_ms": 0.6593749858438969,
+      "zstd_then_dense_spread": [
+        0.6580410408787429,
+        0.6643339875154197
+      ],
+      "run_arrays_ms": 0.00825000461190939,
+      "run_arrays_spread": [
+        0.00825000461190939,
+        0.008541974239051342
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.00825000461190939,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.3350257886700043,
+      "margin_spread": [
+        0.3333333333333333,
+        0.3480696661140245
+      ]
+    },
+    {
+      "seq_len": 4096,
+      "window": 256,
+      "runs_per_row": 1.935302734375,
+      "cardinality": 1049785,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 2.510207996238023,
+      "roaring_per_row_spread": [
+        2.464249962940812,
+        2.5879170279949903
+      ],
+      "roaring_flat_ms": 0.05545897874981165,
+      "roaring_flat_spread": [
+        0.05512498319149017,
+        0.05595904076471925
+      ],
+      "dense_ms": 1.4668749645352364,
+      "dense_spread": [
+        1.439165964256972,
+        1.4808750129304826
+      ],
+      "packed_bitset_ms": 0.1929590362124145,
+      "packed_bitset_spread": [
+        0.19275001250207424,
+        0.193667015992105
+      ],
+      "csr_ms": 5.936499976087362,
+      "csr_spread": [
+        5.929957958869636,
+        11.272249976173043
+      ],
+      "zstd_then_dense_ms": 3.3151250099763274,
+      "zstd_then_dense_spread": [
+        3.1053749844431877,
+        6.576917017810047
+      ],
+      "run_arrays_ms": 0.013124954421073198,
+      "run_arrays_spread": [
+        0.012375006917864084,
+        0.01387501833960414
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.013124954421073198,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.23666058620161254,
+      "margin_spread": [
+        0.22114401442110157,
+        0.25170108971109983
+      ]
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 1.9676513671875,
+      "cardinality": 2135225,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 4.8762920196168125,
+      "roaring_per_row_spread": [
+        4.856250016018748,
+        5.4819579818286
+      ],
+      "roaring_flat_ms": 0.15891698421910405,
+      "roaring_flat_spread": [
+        0.15195796731859446,
+        0.16437500016763806
+      ],
+      "dense_ms": 4.5712090213783085,
+      "dense_spread": [
+        4.40962502034381,
+        4.7307920176535845
+      ],
+      "packed_bitset_ms": 0.7653339998796582,
+      "packed_bitset_spread": [
+        0.7530410075560212,
+        0.8267079829238355
+      ],
+      "csr_ms": 11.974541994277388,
+      "csr_spread": [
+        11.951791995670646,
+        12.025374977383763
+      ],
+      "zstd_then_dense_ms": 10.128916997928172,
+      "zstd_then_dense_spread": [
+        10.09945897385478,
+        10.221000004094094
+      ],
+      "run_arrays_ms": 0.02212502295151353,
+      "run_arrays_spread": [
+        0.022124964743852615,
+        0.02220796886831522
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.02212502295151353,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.1392237781268806,
+      "margin_spread": [
+        0.1346005458329335,
+        0.14614547206829953
+      ]
+    },
+    {
+      "seq_len": 16384,
+      "window": 256,
+      "runs_per_row": 1.98382568359375,
+      "cardinality": 4306105,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 10.23108302615583,
+      "roaring_per_row_spread": [
+        10.157582990359515,
+        10.237167007289827
+      ],
+      "roaring_flat_ms": 0.48745801905170083,
+      "roaring_flat_spread": [
+        0.47975004417821765,
+        0.4995419876649976
+      ],
+      "dense_ms": 17.71008298965171,
+      "dense_spread": [
+        17.594250035472214,
+        18.05741700809449
+      ],
+      "packed_bitset_ms": 3.9816670469008386,
+      "packed_bitset_spread": [
+        3.960374975576997,
+        3.982374968472868
+      ],
+      "csr_ms": 24.600832955911756,
+      "csr_spread": [
+        24.49383301427588,
+        24.706541968043894
+      ],
+      "zstd_then_dense_ms": 39.06699997605756,
+      "zstd_then_dense_spread": [
+        38.90158300055191,
+        39.156542043201625
+      ],
+      "run_arrays_ms": 0.04087499110028148,
+      "run_arrays_spread": [
+        0.04033301956951618,
+        0.04374998388811946
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.04087499110028148,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.08385335660248147,
+      "margin_spread": [
+        0.08073999896994499,
+        0.09119328787777496
+      ]
+    }
+  ],
+  "composition_unstructured": [
+    {
+      "seq_len": 1024,
+      "window": 256,
+      "runs_per_row": 5.6943359375,
+      "cardinality": 234412,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 0.6352500058710575,
+      "roaring_per_row_spread": [
+        0.6344170542433858,
+        0.6406669854186475
+      ],
+      "roaring_flat_ms": 0.014042016118764877,
+      "roaring_flat_spread": [
+        0.01391698606312275,
+        0.014625024050474167
+      ],
+      "dense_ms": 0.07599999662488699,
+      "dense_spread": [
+        0.07599999662488699,
+        0.07604202255606651
+      ],
+      "packed_bitset_ms": 0.0118750031106174,
+      "packed_bitset_spread": [
+        0.011834024917334318,
+        0.012125005014240742
+      ],
+      "csr_ms": 1.3928330154158175,
+      "csr_spread": [
+        1.3925830135121942,
+        1.3977499911561608
+      ],
+      "zstd_then_dense_ms": 0.1569169689901173,
+      "zstd_then_dense_spread": [
+        0.15591701958328485,
+        0.16183301340788603
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 0.0118750031106174,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.8456765047255845,
+      "margin_spread": [
+        0.8091627662622982,
+        0.8712378498653238
+      ]
+    },
+    {
+      "seq_len": 2048,
+      "window": 256,
+      "runs_per_row": 6.30810546875,
+      "cardinality": 503641,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 1.2791250483132899,
+      "roaring_per_row_spread": [
+        1.2756659998558462,
+        1.284915953874588
+      ],
+      "roaring_flat_ms": 0.03566697705537081,
+      "roaring_flat_spread": [
+        0.03512500552460551,
+        0.03645900869742036
+      ],
+      "dense_ms": 0.2965419553220272,
+      "dense_spread": [
+        0.2944159787148237,
+        0.29758299933746457
+      ],
+      "packed_bitset_ms": 0.22475002333521843,
+      "packed_bitset_spread": [
+        0.2245419891551137,
+        0.22554199676960707
+      ],
+      "csr_ms": 2.933582989498973,
+      "csr_spread": [
+        2.933082985691726,
+        2.9336250154301524
+      ],
+      "zstd_then_dense_ms": 0.6025829934515059,
+      "zstd_then_dense_spread": [
+        0.6019999855197966,
+        0.6059999577701092
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 0.22475002333521843,
+      "roaring_wins": true,
+      "margin_over_best_rival": 6.301347686020818,
+      "margin_spread": [
+        6.158751901858513,
+        6.421123453250763
+      ]
+    },
+    {
+      "seq_len": 4096,
+      "window": 256,
+      "runs_per_row": 6.6259765625,
+      "cardinality": 1042150,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 2.550666977185756,
+      "roaring_per_row_spread": [
+        2.547166950535029,
+        2.572291996330023
+      ],
+      "roaring_flat_ms": 0.09279203368350863,
+      "roaring_flat_spread": [
+        0.09258300997316837,
+        0.09712501196190715
+      ],
+      "dense_ms": 1.2718329671770334,
+      "dense_spread": [
+        1.2710409937426448,
+        1.403041009325534
+      ],
+      "packed_bitset_ms": 0.9815830271691084,
+      "packed_bitset_spread": [
+        0.9180420311167836,
+        1.0451669804751873
+      ],
+      "csr_ms": 5.992458027321845,
+      "csr_spread": [
+        5.9849589597433805,
+        6.006082985550165
+      ],
+      "zstd_then_dense_ms": 2.6695000124163926,
+      "zstd_then_dense_spread": [
+        2.638540987391025,
+        2.870958996936679
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 0.9815830271691084,
+      "roaring_wins": true,
+      "margin_over_best_rival": 10.578311393810514,
+      "margin_spread": [
+        9.452169040420234,
+        11.288971710663638
+      ]
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 6.811279296875,
+      "cardinality": 2119393,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.1527919713407755,
+      "roaring_per_row_spread": [
+        5.0832919660024345,
+        5.209333961829543
+      ],
+      "roaring_flat_ms": 0.24541601305827498,
+      "roaring_flat_spread": [
+        0.24445797316730022,
+        0.24633400607854128
+      ],
+      "dense_ms": 4.384832980576903,
+      "dense_spread": [
+        4.3731670011766255,
+        4.407457949128002
+      ],
+      "packed_bitset_ms": 4.0087500237859786,
+      "packed_bitset_spread": [
+        3.9807080174796283,
+        4.017417028080672
+      ],
+      "csr_ms": 12.212834029924124,
+      "csr_spread": [
+        12.168542016297579,
+        12.391500000376254
+      ],
+      "zstd_then_dense_ms": 10.132167022675276,
+      "zstd_then_dense_spread": [
+        10.088790964800864,
+        10.132500028703362
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.0087500237859786,
+      "roaring_wins": true,
+      "margin_over_best_rival": 16.33450879521087,
+      "margin_spread": [
+        16.159798969089216,
+        16.433978307311186
+      ]
+    }
+  ],
+  "structure_sweep": [
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 1.9676513671875,
+      "cardinality": 2135225,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.023374978918582,
+      "roaring_per_row_spread": [
+        4.997249983716756,
+        5.069834005553275
+      ],
+      "roaring_flat_ms": 0.1550419838167727,
+      "roaring_flat_spread": [
+        0.15045801410451531,
+        0.1552909961901605
+      ],
+      "dense_ms": 4.508582991547883,
+      "dense_spread": [
+        4.404000006616116,
+        4.512582963798195
+      ],
+      "packed_bitset_ms": 0.7625000434927642,
+      "packed_bitset_spread": [
+        0.7512499578297138,
+        0.7669170154258609
+      ],
+      "csr_ms": 12.178334000054747,
+      "csr_spread": [
+        12.159915990196168,
+        12.26291700731963
+      ],
+      "zstd_then_dense_ms": 10.152416012715548,
+      "zstd_then_dense_spread": [
+        10.10379201034084,
+        10.257791029289365
+      ],
+      "run_arrays_ms": 0.022833002731204033,
+      "run_arrays_spread": [
+        0.022833002731204033,
+        0.022874970454722643
+      ],
+      "best_rival": "run_arrays_ms",
+      "best_rival_ms": 0.022833002731204033,
+      "roaring_wins": false,
+      "margin_over_best_rival": 0.1472698050496302,
+      "margin_spread": [
+        0.14703365482467534,
+        0.1520355734512925
+      ],
+      "random_per_row": 0
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 1.97021484375,
+      "cardinality": 2079695,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.5112080299295485,
+      "roaring_per_row_spread": [
+        5.331291991751641,
+        5.580124969128519
+      ],
+      "roaring_flat_ms": 0.17041596584022045,
+      "roaring_flat_spread": [
+        0.1627919846214354,
+        0.17399998614564538
+      ],
+      "dense_ms": 4.685292020440102,
+      "dense_spread": [
+        4.468167026061565,
+        4.931250005029142
+      ],
+      "packed_bitset_ms": 4.267874988727272,
+      "packed_bitset_spread": [
+        4.207624995615333,
+        4.497542046010494
+      ],
+      "csr_ms": 12.409666960593313,
+      "csr_spread": [
+        12.122041021939367,
+        12.553624983411282
+      ],
+      "zstd_then_dense_ms": 10.613915976136923,
+      "zstd_then_dense_spread": [
+        10.16208401415497,
+        10.716209013480693
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.267874988727272,
+      "roaring_wins": true,
+      "margin_over_best_rival": 25.043868206156045,
+      "margin_spread": [
+        24.18175477378126,
+        27.62753987224434
+      ],
+      "random_per_row": 1
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 2.942626953125,
+      "cardinality": 2087662,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.066749989055097,
+      "roaring_per_row_spread": [
+        5.053916946053505,
+        5.135749990586191
+      ],
+      "roaring_flat_ms": 0.17758301692083478,
+      "roaring_flat_spread": [
+        0.17625000327825546,
+        0.1788749941624701
+      ],
+      "dense_ms": 4.448583000339568,
+      "dense_spread": [
+        4.434917005710304,
+        4.453749977983534
+      ],
+      "packed_bitset_ms": 4.041834035888314,
+      "packed_bitset_spread": [
+        4.024917026981711,
+        4.057708021719009
+      ],
+      "csr_ms": 12.117374979425222,
+      "csr_spread": [
+        12.104709050618112,
+        12.227834027726203
+      ],
+      "zstd_then_dense_ms": 10.142416984308511,
+      "zstd_then_dense_spread": [
+        10.11370902415365,
+        10.198040981777012
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.041834035888314,
+      "roaring_wins": true,
+      "margin_over_best_rival": 22.760250985544044,
+      "margin_spread": [
+        22.501283904031467,
+        23.022456432598666
+      ],
+      "random_per_row": 2
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 4.875732421875,
+      "cardinality": 2103515,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.112625018227845,
+      "roaring_per_row_spread": [
+        5.105749994982034,
+        5.296083050779998
+      ],
+      "roaring_flat_ms": 0.2091660280711949,
+      "roaring_flat_spread": [
+        0.20825001411139965,
+        0.20991702331230044
+      ],
+      "dense_ms": 4.45874995784834,
+      "dense_spread": [
+        4.430333967320621,
+        4.474667017348111
+      ],
+      "packed_bitset_ms": 4.0525420336052775,
+      "packed_bitset_spread": [
+        4.038457991555333,
+        4.063500033225864
+      ],
+      "csr_ms": 12.179166951682419,
+      "csr_spread": [
+        12.143958010710776,
+        12.39112502662465
+      ],
+      "zstd_then_dense_ms": 10.175457980949432,
+      "zstd_then_dense_spread": [
+        10.142167040612549,
+        10.29099995503202
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.0525420336052775,
+      "roaring_wins": true,
+      "margin_over_best_rival": 19.374762101548793,
+      "margin_spread": [
+        19.238353935436606,
+        19.51260387935516
+      ],
+      "random_per_row": 4
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 8.7283935546875,
+      "cardinality": 2135131,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.155125050805509,
+      "roaring_per_row_spread": [
+        5.112416984047741,
+        5.160916945897043
+      ],
+      "roaring_flat_ms": 0.2709589898586273,
+      "roaring_flat_spread": [
+        0.27062499430030584,
+        0.27579203015193343
+      ],
+      "dense_ms": 4.405250016134232,
+      "dense_spread": [
+        4.387416003737599,
+        4.490666033234447
+      ],
+      "packed_bitset_ms": 4.003125010058284,
+      "packed_bitset_spread": [
+        3.969541983678937,
+        4.024124995339662
+      ],
+      "csr_ms": 12.508290994446725,
+      "csr_spread": [
+        12.325874995440245,
+        12.959541054442525
+      ],
+      "zstd_then_dense_ms": 10.198624979238957,
+      "zstd_then_dense_spread": [
+        10.135000047739595,
+        10.209832980763167
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.003125010058284,
+      "roaring_wins": true,
+      "margin_over_best_rival": 14.773914724685502,
+      "margin_spread": [
+        14.393244001620069,
+        14.869746254383992
+      ],
+      "random_per_row": 8
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 16.4586181640625,
+      "cardinality": 2198653,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.340708012226969,
+      "roaring_per_row_spread": [
+        5.248249974101782,
+        5.505250010173768
+      ],
+      "roaring_flat_ms": 0.36254205042496324,
+      "roaring_flat_spread": [
+        0.3619170165620744,
+        0.37029205122962594
+      ],
+      "dense_ms": 4.472832952160388,
+      "dense_spread": [
+        4.465083999093622,
+        4.524667048826814
+      ],
+      "packed_bitset_ms": 4.034292011056095,
+      "packed_bitset_spread": [
+        3.9827500004321337,
+        4.0499590104445815
+      ],
+      "csr_ms": 12.476791976951063,
+      "csr_spread": [
+        12.457750039175153,
+        12.517749972175807
+      ],
+      "zstd_then_dense_ms": 10.110208007972687,
+      "zstd_then_dense_spread": [
+        10.049000033177435,
+        10.165708023123443
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.034292011056095,
+      "roaring_wins": true,
+      "margin_over_best_rival": 11.127790573058197,
+      "margin_spread": [
+        10.755699419435677,
+        11.190297292224585
+      ],
+      "random_per_row": 16
+    },
+    {
+      "seq_len": 8192,
+      "window": 256,
+      "runs_per_row": 31.8140869140625,
+      "cardinality": 2325211,
+      "trials": 25,
+      "repetitions": 3,
+      "roaring_per_row_ms": 5.467916955240071,
+      "roaring_per_row_spread": [
+        5.451790988445282,
+        5.537541990634054
+      ],
+      "roaring_flat_ms": 0.5456249928101897,
+      "roaring_flat_spread": [
+        0.5452499608509243,
+        0.5736250313930213
+      ],
+      "dense_ms": 4.479750001337379,
+      "dense_spread": [
+        4.3836659751832485,
+        4.8498749965801835
+      ],
+      "packed_bitset_ms": 4.044333007186651,
+      "packed_bitset_spread": [
+        4.014834004919976,
+        4.061500017996877
+      ],
+      "csr_ms": 12.914416962303221,
+      "csr_spread": [
+        12.901125010102987,
+        12.922208989039063
+      ],
+      "zstd_then_dense_ms": 10.158957971725613,
+      "zstd_then_dense_spread": [
+        10.155584022868425,
+        11.050582979805768
+      ],
+      "run_arrays_ms": null,
+      "run_arrays_spread": null,
+      "best_rival": "packed_bitset_ms",
+      "best_rival_ms": 4.044333007186651,
+      "roaring_wins": true,
+      "margin_over_best_rival": 7.412294268920304,
+      "margin_spread": [
+        6.999056500672819,
+        7.448877229919369
+      ],
+      "random_per_row": 32
+    }
+  ],
+  "window_ablation": [
+    {
+      "window": 32,
+      "seq_len": 8192,
+      "density": 0.0040204524993896484,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 27244,
+        "zstd": 889,
+        "lzma": 1460,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.15766697470098734,
+      "compose_dense_ms": 4.483167023863643,
+      "speedup": 28.434407600995016,
+      "shared_with_composition": false
+    },
+    {
+      "window": 64,
+      "seq_len": 8192,
+      "density": 0.007903575897216797,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 27285,
+        "zstd": 919,
+        "lzma": 1496,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.1552079920656979,
+      "compose_dense_ms": 4.50570898829028,
+      "speedup": 29.030135164580063,
+      "shared_with_composition": false
+    },
+    {
+      "window": 128,
+      "seq_len": 8192,
+      "density": 0.015624046325683594,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 27363,
+        "zstd": 993,
+        "lzma": 1548,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.15566596994176507,
+      "compose_dense_ms": 4.528374993242323,
+      "speedup": 29.090333583739575,
+      "shared_with_composition": false
+    },
+    {
+      "window": 256,
+      "seq_len": 8192,
+      "density": 0.030881881713867188,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 27523,
+        "zstd": 1138,
+        "lzma": 1636,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.15891698421910405,
+      "compose_dense_ms": 4.5712090213783085,
+      "speedup": 28.76476069465195,
+      "shared_with_composition": true
+    },
+    {
+      "window": 512,
+      "seq_len": 8192,
+      "density": 0.060665130615234375,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 27840,
+        "zstd": 1428,
+        "lzma": 2052,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.15470798825845122,
+      "compose_dense_ms": 4.474584013223648,
+      "speedup": 28.92277291944694,
+      "shared_with_composition": false
+    },
+    {
+      "window": 1024,
+      "seq_len": 8192,
+      "density": 0.11730194091796875,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 28523,
+        "zstd": 2008,
+        "lzma": 2428,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.1585420104674995,
+      "compose_dense_ms": 4.702750011347234,
+      "speedup": 29.662485025136476,
+      "shared_with_composition": false
+    },
+    {
+      "window": null,
+      "seq_len": 8192,
+      "density": 0.50006103515625,
+      "sizes_bytes": {
+        "dense_f32": 268435456,
+        "packed_bitset": 8388608,
+        "startlen": 65536,
+        "zlib": 33784,
+        "zstd": 10108,
+        "lzma": 7364,
+        "roaring_per_row": 122888,
+        "roaring_flat_opt": 43140
+      },
+      "compose_flat_ms": 0.15429203631356359,
+      "compose_dense_ms": 4.894916026387364,
+      "speedup": 31.72500761114823,
+      "shared_with_composition": false
+    }
+  ],
+  "mutation": [
+    {
+      "seq_len": 1024,
+      "roaring_ms": 0.06754102651029825,
+      "dense_ms": 0.0012919772416353226,
+      "dense_speedup": 52.27725716345287
+    },
+    {
+      "seq_len": 2048,
+      "roaring_ms": 0.1379579771310091,
+      "dense_ms": 0.006249989382922649,
+      "dense_speedup": 22.07331383761432
+    },
+    {
+      "seq_len": 4096,
+      "roaring_ms": 0.2726669772528112,
+      "dense_ms": 0.015166006051003933,
+      "dense_speedup": 17.978825561312608
+    },
+    {
+      "seq_len": 8192,
+      "roaring_ms": 0.5417499924078584,
+      "dense_ms": 0.0415419926866889,
+      "dense_speedup": 13.041020841098186
+    },
+    {
+      "seq_len": 16384,
+      "roaring_ms": 1.0984169784933329,
+      "dense_ms": 0.09275000775232911,
+      "dense_speedup": 11.842769667755093
+    }
+  ],
+  "derived": {
+    "trials": 25,
+    "repetitions": 3,
+    "structured": {
+      "roaring_wins_at": [],
+      "best_rival": [
+        "run_arrays_ms"
+      ],
+      "deficit_min": 1.93540994481802,
+      "deficit_max": 11.925581044306186,
+      "deficit_at_max_n": 11.925581044306186
+    },
+    "unstructured": {
+      "roaring_wins_at": [
+        2048,
+        4096,
+        8192
+      ],
+      "roaring_loses_at": [
+        1024
+      ],
+      "threshold_n": 2048,
+      "best_rival": [
+        "packed_bitset_ms"
+      ],
+      "margin_min_where_winning": 6.301347686020818,
+      "margin_max": 16.33450879521087,
+      "vs_dense_max": 17.866939185976047,
+      "vs_dense_where_winning": [
+        8.31418807547564,
+        13.706273229391119,
+        17.866939185976047
+      ],
+      "loss_detail": [
+        {
+          "seq_len": 1024,
+          "roaring_ms": 0.014042016118764877,
+          "best_rival": "packed_bitset_ms",
+          "best_rival_ms": 0.0118750031106174,
+          "bitset_bytes": 131072
+        }
+      ]
+    },
+    "sweep": {
+      "row_invariant": {
+        "runs_per_row": 1.9676513671875,
+        "roaring_flat_ms": 0.1550419838167727,
+        "best_rival": "run_arrays_ms",
+        "best_rival_ms": 0.022833002731204033,
+        "margin_over_best_rival": 0.1472698050496302
+      },
+      "first_row_dependent": {
+        "runs_per_row": 1.97021484375,
+        "roaring_flat_ms": 0.17041596584022045,
+        "best_rival": "packed_bitset_ms",
+        "best_rival_ms": 4.267874988727272,
+        "margin_over_best_rival": 25.043868206156045
+      },
+      "roaring_ms_min": 0.17041596584022045,
+      "roaring_ms_max": 0.5456249928101897,
+      "runs_min": 1.97021484375,
+      "runs_max": 31.8140869140625,
+      "dense_min": 4.405250016134232,
+      "dense_max": 4.685292020440102
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "source": "revision_main.json",
+  "seeds": [
+    "Vanilla-s0",
+    "Vanilla-s1",
+    "Vanilla-s2",
+    "Vanilla-s3",
+    "Vanilla-s4",
+    "Roaring-s0",
+    "Roaring-s1",
+    "Roaring-s2",
+    "Roaring-s3",
+    "Roaring-s4"
+  ],
+  "vanilla_final_val_loss": [
+    5.158774248758951,
+    5.134585539499919,
+    5.187068939208984,
+    5.173883231480916,
+    5.158063697814941
+  ],
+  "roaring_final_val_loss": [
+    5.132318051656087,
+    5.153039773305257,
+    5.157110484441121,
+    5.166504287719727,
+    5.152690108617147
+  ],
+  "vanilla_mean": 5.162475131352743,
+  "vanilla_sd": 0.019659518972705875,
+  "roaring_mean": 5.152332541147868,
+  "roaring_sd": 0.012498749581924965,
+  "diff_roaring_minus_vanilla": -0.010142590204874402,
+  "welch_se": 0.010418401291463597,
+  "welch_df": 6.779451801502491,
+  "ci95": [
+    -0.03494159618607954,
+    0.014656415776330735
+  ],
+  "ci90": [
+    -0.02997810734696178,
+    0.009692926937212975
+  ],
+  "margin_nats": 0.05,
+  "margin_ppl_factor": 1.0512710963760241,
+  "tost_p_lower": 0.003450232763614225,
+  "tost_p_upper": 0.0003829004912939902,
+  "tost_p": 0.003450232763614225,
+  "tost_equivalent": true,
+  "smallest_margin_passing": 0.02997810734696178,
+  "welch_p_check": 0.3637376149889186,
+  "mannwhitney_p_check": 0.2222222222222222
+}

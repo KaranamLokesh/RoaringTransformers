@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 experiments/results.json
 experiments/comparison_results.png
+paper/v*-review/
+paper-comments*.pdf
+.DS_Store
